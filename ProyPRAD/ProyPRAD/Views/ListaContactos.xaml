@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="ProyPRAD.Views.ListaContactos">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="10,0,10,0"  BackgroundColor="AliceBlue">
+
+            <Button Text="Actualizar"
+                    x:Name="btnActualizar"
+                    Margin="115,5,115,5"
+                Clicked="btnActualizar_Clicked"/>
+            
+            <Button Text="Eliminar"
+                     x:Name="btnEliminar"
+                    Margin="115,5,115,5"
+                Clicked="btnEliminar_Clicked"/>
+
+            <Button Text="Ver Foto"
+                     x:Name="btnEliminar"
+                    Margin="115,5,115,5"
+                Clicked="btnEliminar_Clicked"/>
+
+            <CollectionView x:Name="listacontactos"
+                            Margin="20"
+                            SelectionMode="Single"
+                            SelectionChanged="listacontactos_SelectionChanged">
+                
+                
+
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                                      ItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout BackgroundColor="LightBlue">
+
+                            <Label Text="{Binding Id}" TextColor="Black"/>
+
+                                <Image 
+                                   HeightRequest="250"
+                                   WidthRequest="280"
+                                   Source="{Binding Foto,Converter={StaticResource ByteArrayToImageSourceConverter}}"
+                                   HorizontalOptions="Start"
+                                   Aspect="AspectFit"/>
+
+                            <Label Text="{Binding Nombres}" TextColor="Black" />
+
+                            <Label Text="{Binding Apellidos}" TextColor="Black"/>
+
+                            <Label Text="{Binding Telefono}" TextColor="Black" />
+
+                            <Label Text="{Binding Edad}" TextColor="Black"/>
+
+                            <Label Text="{Binding Pais}" TextColor="Black"/>
+
+                            <Label Text="{Binding Nota}" TextColor="Black"/>
+
+                        </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+
+                </CollectionView>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
